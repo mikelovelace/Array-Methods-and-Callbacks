@@ -14,7 +14,7 @@ Practice accessing data by console.log-ing the following pieces of data note, yo
 
 const worldCupData = fifaData.filter((data) => {
     if (data.Year === 2014 && data.Stage === "Final") {
-    return data
+    return data;
     }
 });
 
@@ -46,7 +46,7 @@ function getFinals(data) {
     const getFinals = data.filter((data) => {
         return data.Stage === "Final"
     });
-    return getFinals
+    return getFinals;
 }
 console.log(getFinals(fifaData))
 
@@ -60,9 +60,9 @@ Use the higher-order function called getYears to do the following:
 
 function getYears(callback) {
     let years = callback.map((years) => {
-        return years.Year
+        return years.Year;
     });
-    return years
+    return years;
 }
 
 console.log(getYears(getFinals(fifaData)));
@@ -75,10 +75,17 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(/* code here */) {
-    /* code here */
+function getWinners(getFinals) {
+    let winners = getFinals.map((data) => {
+        if(data["Home Team Goals"] > data["Away Team Goals"]) {
+            return data["Home Team Name"]
+        } else {
+            return data["Away Team Name"]
+        }
+    })
+    return winners;
 }
-
+console.log(getWinners(getFinals(fifaData)))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 

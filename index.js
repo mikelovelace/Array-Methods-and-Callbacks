@@ -5,16 +5,16 @@ import { fifaData } from './fifa.js';
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Practice accessing data by console.log-ing the following pieces of data note, you may want to filter the data first 😉*/
 
-// const worldCupData = fifaData.filter(function(key) {
-//     if (key.Year === 2014 && key.Stage === "Final") {
-//         console.log(key.Year, key.Stage)
-//     return key
+// const worldCupData = fifaData.filter(function(data) {
+//     if (data.Year === 2014 && data.Stage === "Final") {
+//         console.log(data.Year, data.Stage)
+//     return data
 //     }
 // });
 
-const worldCupData = fifaData.filter((key) => {
-    if (key.Year === 2014 && key.Stage === "Final") {
-    return key
+const worldCupData = fifaData.filter((data) => {
+    if (data.Year === 2014 && data.Stage === "Final") {
+    return data
     }
 });
 
@@ -42,10 +42,13 @@ Use getFinals to do the following:
 hint - you should be looking at the stage key inside of the objects
 */
 
-function getFinals(/* code here */) {
-   /* code here */
+function getFinals(data) {
+    const getFinals = data.filter((data) => {
+        return data.Stage === "Final"
+    });
+    return getFinals
 }
-
+console.log(getFinals(fifaData))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀

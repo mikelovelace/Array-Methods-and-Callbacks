@@ -52,11 +52,11 @@ Use the higher-order function called getYears to do the following:
 years containing all of the years in the getFinals data set*/
 
 
-function getYears(getFinals) {
-    const newArray = getFinals.map((years) => {
+function getYears(finalsArray) {
+    const years = finalsArray.map((years) => {
         return years.Year;
     });
-    return newArray;
+    return years;
 }
 
 console.log(getYears(getFinals(fifaData)));
@@ -69,15 +69,15 @@ Use the higher-order function getWinners to do the following:
 3. Determines the winner (home or away) of each `finals` game. 
 4. Returns the names of all winning countries in an array called `winners` */ 
 
-function getWinners(getFinals) {
-    const newArray = getFinals.map((data) => {
+function getWinners(finalsArray) {
+    const winners = finalsArray.map((data) => {
         if(data["Home Team Goals"] > data["Away Team Goals"]) {
             return data["Home Team Name"]
         } else {
             return data["Away Team Name"]
         }
     })
-    return newArray;
+    return winners;
 }
 console.log(getWinners(getFinals(fifaData)))
 
@@ -92,9 +92,9 @@ Use the higher-order function getWinnersByYear to do the following:
 hint: the strings returned need to exactly match the string in step 4.
  */
 
-function getWinnersByYear(array, getYears, getWinners) {
-    const winners = getWinners(getFinals(array));
-    const years = getYears(getFinals(array));
+function getWinnersByYear(finalsArray, getYears, getWinners) {
+    const years = getYears(getFinals(finalsArray));
+    const winners = getWinners(getFinals(finalsArray));
     
     const newArray = winners.map((country, index) => {
         return `In ${years[index]}, ${country} won the world cup!`
@@ -115,17 +115,15 @@ Use the higher order function getAverageGoals to do the following:
  Example of invocation: getAverageGoals(getFinals(fifaData));
 */
 
-function getAverageGoals(getFinals) {
-    let newArray = getFinals.reduce(function(accumulator, item) {
+function getAverageGoals(finalsArray) {
+    let newArray = finalsArray.reduce((accumulator, item) => {
         return accumulator + item["Home Team Goals"] + item["Away Team Goals"]
     },0)
-    let final = newArray / getFinals.length
+    let final = newArray / finalsArray.length
     return final.toFixed(2)
 };
 
 console.log(getAverageGoals(getFinals(fifaData)));
-
-
 
 
 /// 🥅 STRETCH 🥅 ///
